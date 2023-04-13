@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { TodoCounter } from '../TodoCounter';
-import { TodoSearch } from '../TodoSearch';
-
-function TodoHeader ({children}) {
+function TodoHeader ({children, loading}) {
     return (
         <header>
-            {children}
+            {
+                React.Children
+                    .toArray(children)
+                    .map(child => React.cloneElement(child, {loading}))
+            }
+            {/*React.cloneElement(children, {loading})*/}
         </header>
     );
 }
