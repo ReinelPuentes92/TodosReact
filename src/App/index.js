@@ -18,6 +18,9 @@ import { TodosError } from '../TodosError';
 import { TodosLoading } from '../TodosLoading';
 import { EmptyTodos } from '../EmptyTodos';
 
+//import { ChangeAlertWithStorageListener } from '../StorageChangeAlert'
+import { StorageChangeAlert } from '../StorageChangeAlert';
+
 function App() {
   
   const {
@@ -32,7 +35,8 @@ function App() {
     totalTodos, 
     completedTodos,
     searchValue, 
-    setSearchValue} = useTodos();
+    setSearchValue,
+    sincronizeTodos} = useTodos();
 
     return (
       <React.Fragment>
@@ -90,6 +94,14 @@ function App() {
               setOpenModal={setOpenModal}
           /> 
           
+         {/*<ChangeAlertWithStorageListener 
+            sincronize={sincronizeTodos}
+          /> */}
+
+          <StorageChangeAlert 
+            sincronize={sincronizeTodos}
+          />
+         
       </React.Fragment>
     );
 
